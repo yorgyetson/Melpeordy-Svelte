@@ -1,0 +1,29 @@
+query GetGameByPK($id: uuid!) {
+	games_by_pk(id: $id) {
+		name
+		current_answer
+		current_round
+		buzzed_user_id
+	}
+}
+subscription SubscribeGameByPK($id: uuid!) {
+	games_by_pk(id: $id) {
+		name
+		current_answer
+		current_round
+		buzzed_user_id
+		categories {
+			id
+			name
+			position
+			answers {
+				id
+				answer
+				value
+				question
+				type
+				hasBeenPlayed
+			}
+		}
+	}
+}
